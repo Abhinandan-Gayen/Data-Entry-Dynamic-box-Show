@@ -88,7 +88,7 @@
             if(a == "" || b == "" || c == "" || d == ""){
                 alert(`Fill the all input`);
             }
-            else if(!/^[A-Za-z]+$/.test(a) || !/^[A-Za-z]+$/.test(b)){
+            else if(!/^[A-Z a-z]+$/.test(a) || !/^[A-Z a-z]+$/.test(b)){
                 alert(`Please only text(uppercasse and lowercase)`);
             }
             else if(c.length != 10 || isNaN(c)){
