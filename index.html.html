@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main-content{
+            height: 40vh;
+            width: 25vw;
+            background-color: aqua;
+            margin: auto;
+            padding: 2%;
+            border: 1px solid black;
+            border-radius: 20px;
+            margin-top: 1%;
+        }
+        input{
+            width: 100%;
+            height: 10%;
+            outline: none;
+            border: none;
+            font-size: 16px;
+            margin-bottom: 4.5%;
+        }
+        button{
+            height: 30px;
+            width: 30%;
+            margin: auto;
+            display: block;
+        }
+        .add-box{
+            width: 99vw;
+            margin-top: 1%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 3% 6% 3% 6%;
+        }
+        .item1{
+            height: 300px;
+            width: 323px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.58);
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.525);
+            
+        }
+        .data{
+           padding-left: 5%;
+           margin-top: 7%;
+           font-size: 20px;
+        }
+        @media (max-width: 480px){
+            .main-content{
+                width: 90%;
+                margin-top: 3%;
+            }
+            .item1{
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <label for="yournam">Your Name</label>
+        <input id="yournam" type="text">
+        <label for="fathernam">Fathe's Name</label>
+        <input id="fathernam" type="text">
+        <label for="Number">Phone Number</label>
+        <input id="Number" type="text">
+        <label for="dept">Deparment</label>
+        <input id="dept" type="text">
+        <button onclick="ClickMe()">Submit Form</button>
+    </div>
+    <div class="add-box" id="add-box"></div>
+    <script>
+        function ClickMe(){
+            let a = document.getElementById("yournam").value.trim();
+            let b = document.getElementById("fathernam").value.trim();
+            let c = document.getElementById("Number").value.trim();
+            let d = document.getElementById("dept").value.trim()
+            if(a == "" || b == "" || c == "" || d == ""){
+                alert(`Fill the all input`);
+            }
+            else if(!/^[A-Za-z]+$/.test(a) || !/^[A-Za-z]+$/.test(b)){
+                alert(`Please only text(uppercasse and lowercase)`);
+            }
+            else if(c.length != 10 || isNaN(c)){
+                alert(`Please enter only 10 digit`)
+            }
+            else{
+                let Blok = document.createElement("div");           //akta box create korchi jar modhe text thakbe.
+                    Blok.className = "item1";
+                
+                let text1 = document.createElement("p");             // ata hocche sei text 1no text
+                    text1.className = "data";                           // css er sate connect korechi
+                    text1.innerHTML += `Your Name: ` + a;
+                    Blok.appendChild(text1);
+
+                let text2 = document.createElement("p");                // p tag baniyechi
+                    text2.className = "data";
+                    text2.innerHTML += `Father Name: ` + b;                               // text add korechi
+                    Blok.appendChild(text2);
+
+                let text3 = document.createElement("p");
+                    text3.className = "data";
+                    text3.innerHTML += `Number: ` + c;
+                    Blok.appendChild(text3);
+
+                let text4 = document.createElement("p");
+                    text4.className = "data";
+                    text4.innerHTML += `Deparment: ` + d;
+                    Blok.appendChild(text4);
+
+                let AllBox = document.getElementById("add-box");
+                    AllBox.appendChild(Blok);
+                    document.body.appendChild(AllBox);
+            }
+        }
+    </script>
+</body>
+</html>
